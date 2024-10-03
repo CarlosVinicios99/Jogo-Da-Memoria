@@ -1,10 +1,14 @@
 import React from 'react'
 import Card from './Card'
 
-const Board = () => {
+const Board = ({cards}) => {
   return (
     <div className="board">
-        <Card/>
+        {
+          cards.map((card) => (
+            <Card key={card.id} card={card}/>
+          ))
+        }
     </div>
   )
 }

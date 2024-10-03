@@ -24,8 +24,7 @@ const generateCards = () => {
 
   const duplicatedCards = cards.concat([...cards]).map((card, index) => ({...card, index}))
 
-  console.log(shuffleArray(duplicatedCards))
-  console.log(cards)
+  return shuffleArray(duplicatedCards)
 }
 
 generateCards()
@@ -38,9 +37,17 @@ const Game = () => {
 
   const [chances, setChances] = useState(6)
 
+  const result = cards.filter((card) => card.isFlipped).length
+
   return (
     <div className="game">
-        <Board/>
+        <Board cards={cards}/>
+        {chances === 0 ? (<p>Suas tentativas acabaram!</p>)
+        : result === cards.length 
+        ? (<h2>Parabéns, você ganhou!</h2>)
+        : (<p>Você possuí {chances} tentativas</p>)
+        }
+        <button className="btn">Reiniciar o jogo</button>
     </div>
   )
 }
