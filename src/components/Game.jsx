@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Board from './Board'
 
 
@@ -14,6 +14,7 @@ const shuffleArray = (array) => {
 }
 
 const generateCards = () => {
+
   const values = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
   const cards = values.map((value) => ({
@@ -30,6 +31,13 @@ const generateCards = () => {
 generateCards()
 
 const Game = () => {
+
+  const [cards, setCards] = useState(generateCards())
+
+  const [flippedCards, setFlippedCards] = useState([])
+
+  const [chances, setChances] = useState(6)
+
   return (
     <div className="game">
         <Board/>
