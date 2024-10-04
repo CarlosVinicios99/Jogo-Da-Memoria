@@ -80,6 +80,12 @@ const Game = () => {
     }
   }
 
+  const resetGame = () => {
+    setChances(6)
+    setFlippedCards([])
+    setCards(generateCards())
+  }
+
   return (
     <div className="game">
         <Board cards={cards} onCardClick={handleCardClick}/>
@@ -88,7 +94,7 @@ const Game = () => {
         ? (<h2>Parabéns, você ganhou!</h2>)
         : (<p>Você possuí {chances} tentativas</p>)
         }
-        <button className="btn">Reiniciar o jogo</button>
+        <button className="btn" onClick={resetGame}>Reiniciar o jogo</button>
     </div>
   )
 }
